@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to Earbook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="files/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:700|Source+Sans+Pro:600" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+		<!--<nav class="navbar navbar-expand-lg navbar-dark">
+			<a class="navbar-brand" href="index.html">
+                earbook
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<form name="login" method="post">
+                        <div style="float:left;">
+                            <label for="email">Email</label>
+                            <input id="login_email" type="text" value="" name="login_email" style="width: 10em; padding: 0.2em;">
+                        </div>
+                    
+                        <div style="float:left;">
+                            <label for="email">Password</label>
+                            <input id="login_password" type="text" value="" name="login_password" style="width: 10em; padding: 0.2em;">
+                        </div>
+                    </form>
+				</ul>
+			</div>
+        </nav>-->
+        <div class="row">
+            <div class="col-md-12" id="header" style="display: inline;">
+                <div id="logo">
+                    earbook
+                </div>
+                <div id="loginarea">
+                    <form name="login" action="/login" method="post">
+                        <div>
+                            <label for="email">Email</label>
+                            <input id="login_email" type="text" value="" name="login_email" style="width: 10em; padding: 0.2em;">
+                        </div>
+                        <div>
+                            <label for="email">Password</label>
+                            <input id="login_password" type="password" value="" name="login_password" style="width: 10em; padding: 0.2em;">
+                        </div>
+                    </form>
+                </div>
+                <div class="button" id="login_button">
+                    <button type="submit">Log In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="illustration">
+                    <img src="media/mohawk.png" style="margin: 10% auto;">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form name ="signup" action="/signup" method="post">
+                    <h1>Sign up</h1>
+                    <h5>It's free and easy.</h5>
+                    <div>
+                        <input type="text" id="firstname" name="first_name" placeholder="First Name" value="Mark" onfocus="this.value= this.isEmpty() ? '' : this.value">
+                    
+                        <input type="text" id="lastname" name="last_name" placeholder="Last Name" value="SUCCerberg" onfocus="this.value= this.isEmpty() ? '' : this.value">
+                    </div>
+                    <div>
+                        <input type="email" id="mail" name="user_email" placeholder="Email Address" onfocus="this.value= this.isEmpty() ? '' : this.value">
+                    </div>
+                    <div>
+                        <input type="password" id="password" name="user_password" placeholder="Password" onfocus="this.value= this.isEmpty() ? '' : this.value">
+                    </div>
+                    <div class="button" id="signin_button">
+                        <button type="submit">Sign me up!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+<style>
+    body {
+        font-family: 'Lato', sans-serif !important;
+        font-size: 1em;
+        color: black;
+        height: 100%;
+        margin: 0;
+        background-image: linear-gradient(to bottom right, #F2A03A, #7B0855);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        /*text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);*/
+    }
+    h1 {
+        padding: 0.4em 0.5em;
+    }
+    h5 {
+        padding: 0.4em 1em;
+        font-weight: normal !important;
+    }
+    form[name="signup"] {
+        background-color: white;
+        border-radius: 0.25em;
+        box-shadow: 0px 8px 8px rgba(17,17,17,0.1);
+        height: 25em;
+        width: 600px;
+        margin: 0 auto;
+        transform: translateY(30%);
+        padding: 0.5em;
+    }
+    form[name="signup"] div + div {
+        margin-top: 1em;
+    }
+    #header {
+        background-image: linear-gradient(#981652, #7B0855);
+        width: 100%;
+        padding: 1em;
+        border-bottom: 1px #750857;
+    }
+    form[name="login"] {
+        color: white;
+        font-size: 0.9em;
+        background-color: none;
+        box-shadow: none;
+        height: 3em;
+        width: 50%;
+        float: right;
+        transform: none;
+        display: flex;
+        margin-right: 20%;
+    }
+    form[name="login"]>input {
+        font-size: 0.9em;
+    }
+    input, textarea {
+        font: 1.2em;
+        width: 94%;
+        box-sizing: border-box;
+        border: 1px solid #999;
+        padding: 0.5em;
+        margin: 0 1em;
+        border-radius: 0.1em;
+    }
+    #firstname, #lastname {
+        display: inline-block;
+        width: 44%;
+    }
+    input:focus, textarea:focus {
+        border-color: #000;
+    }
+    textarea {
+        vertical-align: top;
+        height: 5em;
+    }
+    #signin_button {
+        width: 20%;
+        margin: 2em auto;
+    }
+    #signin_button button {
+        background-color: #981652;
+        border: none;
+        border-radius: 1em;
+        padding: 0.5em 0.75em;
+        color: white;
+        box-shadow: 0px 4px 4px rgba(40,40,40,0.3);
+    }
+    button:hover { background-color: #821055 }
+    button:active {
+        transform: translateY(3px);
+        box-shadow: 0px 1px 1px rgba(40,40,40,0.3);
+    }
+    #logo {
+        font-size: 2.7em;
+        font-weight: bold;
+        padding-left: 18%;
+        color: white;
+        float: left;
+        width: 30%;
+    }
+    #loginarea {
+        margin-left: 11%;
+        width: 30%;
+        float: left;
+    }
+    #login_button {
+        width: 10%;
+        float: left;
+        margin-left: 6%;
+        margin-top: 1.8em;
+    }
+    #login_button button {
+        width: 4em;
+        background-color: #981652;
+        border: 1px solid #750857;
+        border-radius: 0.25em;
+        color: white;
+        box-shadow: 0px 4px 4px rgba(40,40,40,0.3);
+        float: left;
+    }
+</style>
+</html>
