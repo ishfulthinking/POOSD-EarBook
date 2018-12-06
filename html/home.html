@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Welcome to Earbook</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -12,8 +13,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:700|Source+Sans+Pro:600" rel="stylesheet">
 </head>
 <script>
-    
-    
+    let text ="";
+
     function openSongSearch() {
         let backgroundBlocker = document.getElementById("backgroundblocker");
         let searchBox = document.getElementById("searchbox");
@@ -37,7 +38,67 @@
     }
 
     function searchSong() {
+        let listBox = document.getElementById("listbox");
+        let searchBox = document.getElementById("searchbox");
+        listBox.style.transition = "opacity 0.5s";
+        searchBox.style.transition = "opacity 0.5s";
+        listBox.style.opacity = 1;
+        searchBox.style.opacity = 0;
+        listBox.style.display = "inline";
+        searchBox.style.display = "none";
+    }
+
+    function selectSong() {
+        let listBox = document.getElementById("listbox");
+        listBox.style.transition = "opacity 0.5s";
+        listBox.style.opacity = 0;
+        listBox.style.display = "none";
+        text = $("input[name='pickedsong']:checked").val();
+        if(text)
+            document.getElementById("selectedsong").innerHTML = text;
+        hideSongSearch();
+    }
+
+    /*function populateSong() {
+        let listBox = document.getElementById("listbox");
+        listBox.style.transition = "opacity 0.5s";
+        listBox.style.opacity = 0;
+        listBox.style.display = "none";
+        hideSongSearch();
+    }*/
+
+    function validatePost() {
+        if (text == null || text.length == 0) {
+            alert("You must select a song.");
+            return false;
+        }
+        else
+            return true;
+    }
+
+    function doPost() {
         // do stuff
+    }
+
+    function addFriend() {
+        let regTriangle = document.getElementById("regTriangle");
+        regTriangle.style.transition = "opacity 0.2s";
+
+        if (regBox.style.opacity == 0) {
+            regBox.style.opacity = 1;
+        }
+        else {
+            regBox.style.opacity = 0;
+        }
+    }
+
+    function confirmFriend() {
+        let signup = document.getElementById("signup");
+        signup.style.transition = "background-color 0.2s";
+        signup.style.backgroundColor = "green";
+
+        setTimeout(openRegistration, 500);
+        signup.style.backgroundColor = "dodgerblue";
     }
 
 </script>
@@ -57,7 +118,20 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <a href="logout">Log out</a>
+                    <p onclick="addFriend()" style="color: #F2A03A;">Add Friend</p>
+                    <form action="../php/addFriend.php" method="post">
+                        <div id="regTriangle"></div>
+                        <div id="regBox">
+                            <p>Add Friends</p>
+                            <input type="text" name="username" placeholder="Friend Email"/><br>
+                            <input type="submit" id="addFriend" value="Sign Up" onclick="confirmFriend()"/><br>
+                        </div>
+                    </form>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <a href="logout">Log Out</a>
                 </ul>
             </div>
         </nav>
@@ -82,7 +156,8 @@
                     <form name="editor" method="post">
                         <div class="editorstuff">
                             <textarea placeholder="What's stuck in your head?"></textarea>
-                            <button type="submit" action="/post">Post</button>
+                            <div id="selectedsong" style="font-style: italic;"></div>
+                            <button type="button" onclick="validatePost()">Post</button>
                             <button type="button" onclick="openSongSearch()" style="background-color: #23D660; margin-right: 2em;">Search</button>
                         </div>
                     </form>
@@ -119,7 +194,12 @@
             <input type="text" name="artistname" placeholder="Artist Name"/><br>
             <input type="button" id="search" value="Search" onclick="searchSong()"/><br>
         </div>
-
+        <div id="listbox">
+            <input type="radio" name="pickedsong" value="Paranoid Android by Radiohead"/>Paranoid Android by Radiohead<br>
+            <input type="radio" name="pickedsong" value="I Think I'm Paranoid by Garbage"/>I Think I'm Paranoid by Garbage<br>
+            <input type="radio" name="pickedsong" value="Love/Paranoia by Tame Impala"/>Love/Paranoia by Tame Impala<br>
+            <input type="button" id="select" value="Select" onclick="selectSong()"/><br>
+        </div>
     </div>
 
     
@@ -138,6 +218,20 @@
     }
     a {
         color: #F2A03A;
+    }
+
+    #regBox {
+        width: 324px;
+        height: 160px;
+        position: fixed;
+        background-color: white;
+        border-radius: 2px;
+        box-shadow: 0px 8px 8px rgba(17,17,17,0.1);
+        margin: auto;
+        opacity: 0;
+        top: 62px;
+        z-index: 9;
+        padding: 1em;
     }
 
     .userinfo {
@@ -194,6 +288,10 @@
         border-radius: 50%;
         border: 3px solid white;
         box-shadow: 0px 4px 12px rgba(17,17,17,0.2);
+    }
+    #selectedsong {
+        float: left;
+        padding: 1em;
     }
 
     form {
@@ -335,12 +433,31 @@
         left: 35%;
         display: none;
     }
-
     #searchbox input {
         width: 100%;
         float: left;
         padding: 0.5em;
         margin: 0px;
+    }
+
+    #listbox {
+        z-index: 7;
+        width: 420px;
+        height: 240px;
+        background-color: white;
+        padding: 1em;
+        border-radius: 2px;
+        box-shadow: 0px 8px 8px rgba(17,17,17,0.1);
+        position: fixed;
+        top: 40%;
+        left: 35%;
+        display: none;
+        text-align: left;
+        overflow: scroll;
+    }
+    #listbox input {
+        float: left;
+        text-align: left;
     }
 
 </style>
