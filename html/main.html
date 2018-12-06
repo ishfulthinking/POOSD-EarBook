@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to Earbook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="files/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:700|Source+Sans+Pro:600" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<a class="navbar-brand" href="home.html">
+                earbook
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+                    <a href="/logout">Log out</a>
+				</ul>
+			</div>
+        </nav>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="userinfo">
+                    <div class="icon"></div>
+                    <div class="name"></div>
+                    <div class="description"></div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="posteditor">
+                    <div class="icon">
+                        <img src="media/icon.png" alt="It's you!">
+                    </div>
+                    <form name="editor" action="/post" method="post">
+                        <div class="editorstuff">
+                            <textarea placeholder="What's stuck in your head?"></textarea>
+                            <button type="submit">Post</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="post">
+                    <div class="icon">
+                        <img src="media/pikachu.png" alt="It's them!">
+                    </div>
+                    <div class="name">Melody Clefson</div>
+                    <div class="music"></div>
+                    <div class="text">Hey everyone, just trying out this new platform! It sounds pretty rad. I like music a lot so it makes sense that I would use a social media site for music geeks.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+<style>
+    body {
+        font-family: 'Lato', sans-serif !important;
+        font-size: 1em;
+        color: black;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        background-image: linear-gradient(to bottom right, #F2A03A, #7B0855);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .posteditor {
+        min-height: 100px;
+        width: 100%;
+        background-color: white;
+        padding: 1em;
+        border-radius: 2px;
+        box-shadow: 0px 8px 8px rgba(17,17,17,0.1);
+        margin-top: 10%;
+        overflow: hidden;
+    }
+    .icon {
+        position: relative;
+        float: left;
+        z-index: 5;
+        width: 80px;
+    }
+    .icon img {
+        height: 64px;
+        width: 64px;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0px 4px 12px rgba(17,17,17,0.2);
+    }
+
+    form {
+        float: left;
+        width: 87%;
+    }
+    form textarea {
+        float: left;
+        width: 100%;
+    }
+    form button {
+        width: 4em;
+        position: relative;
+        float: right;
+        margin-top: 1em;
+        background-color: #981652;
+        border: none;
+        border-radius: 1em;
+        padding: 0.5em 0.25em;
+        color: white;
+        box-shadow: 0px 4px 4px rgba(40,40,40,0.3);
+    }
+
+    .post {
+        min-height: 100px;
+        width: 100%;
+        background-color: white;
+        padding: 1em;
+        border-radius: 2px;
+        box-shadow: 0px 8px 8px rgba(17,17,17,0.1);
+        margin-top: 4em;
+        overflow: hidden;
+    }
+    .name {
+        font-size: 1.2em;
+        text-decoration: bold;
+        margin-bottom: 1em;
+    }
+    .text {
+        font-size: 1em;
+        text-decoration: none;
+        width: 100%;
+    }
+
+    .container {
+        padding: 0px;
+    }
+    .container-fluid {
+        margin-left: -16px;
+        width: 104%;
+    }
+    .navbar {
+        background-image: linear-gradient(#981652, #7B0855);
+        width: 100%;
+        padding: 1em;
+        border-bottom: 1px #750857;
+    }
+    .navbar-brand {
+        font-size: 2.7em;
+        padding-left: 18%;
+        margin-right: -32px;
+    }
+    input, textarea {
+        font: 1.2em;
+        width: 94%;
+        box-sizing: border-box;
+        border: 1px solid #999;
+        padding: 0.5em;
+        margin: 0 1em;
+        border-radius: 0.1em;
+    }
+    input:focus, textarea:focus {
+        border-color: #000;
+    }
+    button {
+        background-color: #981652;
+        border: none;
+        border-radius: 1em;
+        padding: 0.5em 0.75em;
+        color: white;
+        box-shadow: 0px 4px 4px rgba(40,40,40,0.3);
+    }
+    button:hover { background-color: #821055 }
+    button:active {
+        transform: translateY(3px);
+        box-shadow: 0px 1px 1px rgba(40,40,40,0.3);
+    }
+</style>
+</html>
